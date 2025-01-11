@@ -1,0 +1,1 @@
+from efacture_api.wsgi import application

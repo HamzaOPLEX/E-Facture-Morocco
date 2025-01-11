@@ -1,0 +1,86 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>{{ User.username }} welcome to <b>E-Facture</b> admin page</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-setting">
+                    <div class="inner">
+                        <h3>-</h3>
+                        <p>Global Settings</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <a routerLink="/settings/global" class="small-box-footer">
+                        Manage <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ lengths.len_products }}</h3>
+                        <p>Manage your products</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <a routerLink="/settings/products" class="small-box-footer">
+                        Manage <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div> -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{ Lenghts.len_clients }}</h3>
+                        <p>Manage your clients</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <a routerLink="/settings/clients" class="small-box-footer">
+                        Manage <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>{{ Lenghts.len_users }}</h3>
+                        <p>Manage your users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <a routerLink="/settings/users" class="small-box-footer">
+                        Manage <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>{{ Lenghts.len_templates }}</h3>
+                        <p>Choose an invoice template</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        Manage <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>

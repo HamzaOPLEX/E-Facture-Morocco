@@ -1,0 +1,61 @@
+<div class="card card-default"> <!-- Start of Card Container -->
+    <div class="card-header"> <!-- Card Header Section -->
+        <h3 class="card-title">Table of Invoice Items</h3> <!-- Title -->
+        <button class="btn btn-info add-new" (click)="addRow()">Add Row</button> <!-- Button to Add Row -->
+    </div>
+    <div class="card-body table-responsive p-0" style="height: 552px;"> <!-- Card Body with Table -->
+        <table id="{{TYPE}}" class="table table-head-fixed text-nowrap"> <!-- Table Element -->
+            <thead> <!-- Table Header -->
+                <tr>
+                    <th id="smallth">Qs</th> <!-- Table Header: Quantity -->
+                    <th id="designationth">DESIGNATION</th> <!-- Table Header: Designation -->
+                    <th id="smallth">P.U</th> <!-- Table Header: Unit Price -->
+                    <th id="smallth">P.T</th> <!-- Table Header: Total Price -->
+                    <th id="smallth">Action</th> <!-- Table Header: Action -->
+                </tr>
+            </thead>
+            <tbody> <!-- Table Body (Rows) -->
+                <tr *ngFor="let item of tableData; let i = index"> <!-- Loop through tableData -->
+                    <td><input class="form-control" type="number" min="0" [(ngModel)]="item.quantity"
+                            (input)="RowDataSave(item)" required /></td> <!-- Input for Quantity -->
+                    <td><input class="form-control" [(ngModel)]="item.name" (input)="RowDataSave(item)" required /></td>
+                    <!-- Input for Designation -->
+                    <td><input class="form-control" type="number" min="0" [(ngModel)]="item.unity_total"
+                            (input)="RowDataSave(item)" required /></td> <!-- Input for Unit Price -->
+                    <td><input class="form-control" type="number" min="0" [(ngModel)]="item.total"
+                            (change)="RowDataSave(item)" disabled required /></td>
+                    <!-- Input for Total Price (Disabled) -->
+                    <td>
+                        <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-sm p-button-danger p-button-text p-button-raised"
+                            (click)="deleteRow(i)"></p-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-header" style="text-align: center;background: #0d899a;color: white;">
+        <!-- Card Header for Totals -->
+        <span class="text-left" style="float: left;"> <!-- Left-aligned Text -->
+            <b>N</b>: <span id="price">{{ N_ELEMENT }}</span> <!-- Total Elements -->
+        </span>
+        <ng-container *ngIf="TYPE === 'invoices' ; else notInvoice"> <!-- Condition: If TYPE is INVOICE -->
+            <span class="text-center"> <!-- Centered Text -->
+                <b>TOTAL HT</b>: <span id="price">{{ TOTAL_HT }}</span> <!-- TOTAL_HT -->
+            </span>
+        </ng-container>
+        <ng-template #notInvoice> <!-- Template for Non-INVOICE -->
+            <span class="text-left float-right"> <!-- Left-aligned and Right-floated Text -->
+                <b>TOTAL HT</b>: <span id="price">{{ TOTAL_HT }}</span> <!-- TOTAL_HTe -->
+            </span>
+        </ng-template>
+        <ng-container *ngIf="TYPE === 'invoices'"> <!-- Condition: If TYPE is INVOICE -->
+            <span class="text-right" style="float: right;"> <!-- Right-aligned and Right-floated Text -->
+                <b>TOTAL TTC</b>: <span id="price">{{ TOTAL_TTC }}</span> <!-- Total TTC -->
+            </span><br>
+            <span class="text-right" style="float: right;"> <!-- Right-aligned and Right-floated Text -->
+                <b>TVA</b>: <span id="price">{{ TVA }}</span> <!-- TVA -->
+            </span>
+        </ng-container>
+    </div>
+</div>

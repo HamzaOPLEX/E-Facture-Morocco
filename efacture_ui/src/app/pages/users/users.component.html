@@ -1,0 +1,75 @@
+<!-- Assuming that you have set up your Angular components and services -->
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <!-- <h1>{{ User.username }} welcome to the User Management Page </h1> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Created Users</h3>
+                </div>
+                <div class="card-body table-responsive p-0" style="height: 552px;">
+                    <table class="table table-head-fixed text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Permission</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Create a New User</h3>
+                </div>
+                <form (submit)="addUser()" id='MainAddNewUserForm'>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"  autocomplete="off"
+                                placeholder="Username" required> <!--[(ngModel)]="newUser.username"-->
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add other input fields for password, gender, type, status, etc. -->
+                        <!-- Remember to bind these to properties in your component -->
+                        <div class="row">
+                            <div class="col-4">
+                                <!-- <center> -->
+                                    <button type="submit" id='submitbttn' class="btn btn-primary btn-block">
+                                        <i class="far fa-plus-square"></i> Add
+                                    </button>
+                                <!-- </center> -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add the modal for delete and edit forms if needed -->
+<!-- Add any custom styles in your Angular component's CSS file -->

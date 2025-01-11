@@ -1,0 +1,75 @@
+/* Login Page Settings*/
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    box-shadow: none;
+    padding: 6px;
+    width: 114px;
+}
+
+.col-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin: auto;
+}
+
+.card {
+    box-shadow: 4px 7px 7px rgb(0 0 0 / 0%), 0px 20px 20px 0px rgb(13 128 146);
+    margin-bottom: 1rem;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.input-group {
+    background-color: white !important;
+    border-radius: 7px !important;
+}
+
+.login-box,
+.register-box {
+    width: 97% !important;
+    max-width: 400px !important;
+}
+
+.login-logo,
+.register-logo {
+    box-shadow: 4px 7px 7px rgb(0 0 0 / 0%), 0px 20px 20px 0px rgb(13 128 146);
+}
+
+.alert-danger {
+    color: #fff;
+    background-color: #253557ad;
+    border-color: #007bff45;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0d8092;
+    border-color: #ffffff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d8092;
+    border-color: #06627194;
+    box-shadow: none;
+    padding: 6px;
+    width: 114px;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    color: #fff;
+    background-color: #0d8092;
+    border-color: #0d8092;
+    box-shadow: 0 0 0 0 rgb(38 143 255 / 50%);
+}
+
+.login-page {
+    min-height: 300.391px;
+    background-image: url(/src/assets/img/loginbackound.jpg);
+    background-size: cover;
+}

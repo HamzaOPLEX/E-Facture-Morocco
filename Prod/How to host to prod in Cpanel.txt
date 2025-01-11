@@ -1,0 +1,23 @@
+1- Create api SubDomains :
+    - api.yourdomain.com
+2- Use root domain (yourdomain.com) as FrontEnd
+3- Prepare FronEnd :
+    3.1- Upload all efacture_ui production JS/HTML... files content to yourdomain.com root folder
+    3.2- Upload .htaccess to yourdomain.com root folder
+    3.3- Update Fronend API Server Address Using FixNewAPI.sh script
+        - edit the script
+        - add your new domain
+        - run it inside yourdomain.com : bash FixNewAPI.sh
+4- Prepare Backend:
+    - Upload efacture_api content to root api.yourdomain.com folder
+    - Create Python APP on Cpanel (Follow Image in Production Folder) (Choose Python 3.10)
+    - After Creating the app upload passenger_wsgi.py to root api.yourdomain.com folder
+    - Create MySQL Database
+    - Create MySQL User Database
+    - Modify Database Settings in settings.py
+    - copy env command from python app page
+    - go to terminal and activate the env
+    - install requirments.txt
+    - run migrate_clean.sh to migrate database
+    - create an admin user
+5- Check the both (Front/API) that they have correct system permission (it should be 755 or 777)

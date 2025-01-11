@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Redirect all routes to index.html for Angular routing
+  RewriteRule ^(?!.*\.(js|css|png|jpg|gif|ico|map|woff2|svg|eot|ttf)$)(.*)$ /index.html [L]
+</IfModule>

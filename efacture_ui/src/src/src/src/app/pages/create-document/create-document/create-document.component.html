@@ -1,0 +1,25 @@
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1> 
+                    <span style="font-weight: bold;">{{User | titlecase}}</span> 
+                    Welcome to the <span style="font-weight: bold;">{{TYPE | titlecase}}</span> creation page</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content" >
+    <!-- Card for displaying totals -->
+    <div class="row">
+        <!-- Card for form -->
+        <div class="col-md-6">
+            <app-create-billing-form></app-create-billing-form> <!-- get type from URL -->
+        </div>
+        <div class="col-md-6">
+            <app-create-document-table-items></app-create-document-table-items>
+        </div>
+    </div>
+</section>

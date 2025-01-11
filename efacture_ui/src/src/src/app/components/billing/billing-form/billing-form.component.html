@@ -1,0 +1,81 @@
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">Enter Billing Information</h3>
+        <button class="btn btn-info add-new" style="background-color: red !important;background-image: none;" (click)="ClearCache()">Clear</button> <!-- Button to Add Row -->
+    </div>
+    <div class="card-body">
+        <form id="Form" [formGroup]="BillingForm" (change)="onFormChange()">
+            <input type="hidden" name="datatable" id="tableinput" value="" required>
+            <div class="form-group">
+                <label>Invoice Number</label>
+                <input type="text" min="0" class="form-control" formControlName="documentNumber"  placeholder="N°:" required readonly>
+            </div>
+            <div class="form-group">
+                <label>Client Name</label>
+                <div style="display: flex;">
+                    <select id="ClientID" formControlName="clientName" class="form-control" style="margin-right: 10px;">
+                        <option value="-" selected disabled>Select a Client</option>
+                        <option *ngFor="let client of selectBody" [value]="client.id">{{ client.name }}
+                        </option>
+                    </select>
+                    <app-add-client-modal></app-add-client-modal>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>La Date</label>
+                        <input type="date" class="form-control" id="Date" autocomplete="off" formControlName="invoiceDate" value=""
+                            placeholder="..." required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                    </div>
+                </div>
+                <!-- Conditionally show elements based on TYPE -->
+                <div *ngIf="TYPE === 'INVOICE'" id="avance" class="col-sm-6">
+                    <div class="form-group">
+                        <label>Avance :</label>
+                        <input type="number" class="form-control" formControlName="avanceMoney" value="0">
+                    </div>
+                </div>
+                
+                <div *ngIf="TYPE === 'INVOICE'" class="col-sm-6">
+                    <div class="form-group">
+                        <label>Méthode de paiement</label>
+                        <select class="form-control" id='paiementmethod' formControlName="PayingMethod">
+                            <option value="-" disabled selected>Choisir Une Méthode</option>
+                            <option>Espèces</option>
+                            <option>Chèque</option>
+                            <option value='Lettre'>Lettre De Change</option>
+                            <option value='Virement'>Virement Bancaire</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div *ngIf="TYPE === 'INVOICE'" class="col-sm-6">
+                    <div class="form-group">
+                        <label>TTC ou HT :</label>
+                        <select class="form-control" id="TTTCorHT" formControlName="TTTCorHT">
+                            <option>TTC</option>
+                            <option>HT</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ButtnEnregister">
+                <button id="savebttn" type="submit" class="btn btn-default btn-info">
+                    <i id="IconPlus" class="fas fa-plus"></i>
+                    <span id="IconSpin" class="spinner-border spinner-border-sm" style="display:none"></span>
+                    <b>SAVE</b>
+                </button>
+                <button id="savebttn" type="button" class="btn btn-default btn-success add-new">
+                    <i id="IconPlus" class="fas fa-plus"></i>
+                    <span id="IconSpin" class="spinner-border spinner-border-sm" style="display:none"></span>
+                    <b>Print</b>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
