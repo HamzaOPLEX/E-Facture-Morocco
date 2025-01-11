@@ -12,13 +12,13 @@ from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.core.cache import cache
-from django.views.decorators.cache import cache_control
-from efacture_api import settings
+# from django.views.decorators.cache import cache_control
+# from efacture_api import settings
 
 class ProductsListAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    @method_decorator(cache_page(settings.CACHE_TIME))
-    @method_decorator(cache_control(no_cache=True, must_revalidate=True))
+    # @method_decorator(cache_page(settings.CACHE_TIME))
+    # @method_decorator(cache_control(no_cache=True, must_revalidate=True))
     # Get a list of all products
     def get(self, request, format=None):
         products = Product.objects.all()
@@ -71,7 +71,7 @@ class ProductsDeleteAPIView(APIView):
 class ProductsDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    @method_decorator(cache_page(settings.CACHE_TIME))
+    # @method_decorator(cache_page(settings.CACHE_TIME))
     def get(self, request,pk, format=None):
         products = Product.objects.filter(id=pk)
         serializer = APP_ProductsSerializer(products, many=True)

@@ -26,11 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#@*_$il3ro_un2(ebww+k(vp45p%j#z67cd@m&a1oq^^*rh*n2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 PRIVATE_SERVER_ADDRESS = ["127.0.0.1","localhost"]
 PUBLIC_SERVER_ADRESS = ["API_SERVER_TO_CHANGE"]
-FRONT_END_SERVER = "FRONTEND_SERVER_TO_CHANGE"
+FRONT_END_SERVER = "http://localhost:4200"
 
 ALLOWED_HOSTS = []
 [ALLOWED_HOSTS.append(i) for i in PRIVATE_SERVER_ADDRESS]
@@ -92,16 +92,30 @@ WSGI_APPLICATION = 'efacture_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Production Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'certifyg_efacturedb',
+#         'USER': 'certifyg_efacturedb',
+#         'PASSWORD': 'Ef@cture@2025',
+#         'HOST':'localhost',
+#         'PORT':'3306',
+#     }
+# }
+
+# Development Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'certifyg_efacturedb',
-        'USER': 'certifyg_efacturedb',
-        'PASSWORD': 'Ef@cture@2025',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
+
+
 
 CACHES = {
     'default': {

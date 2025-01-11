@@ -13,12 +13,12 @@ from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.core.cache import cache
 from django.views.decorators.cache import cache_control
-from efacture_api import settings
+# from efacture_api import settings
 
 class ClientsListAPIView(APIView):
     permission_classes = [IsAuthenticated]
-    @method_decorator(cache_page(settings.CACHE_TIME))
-    @method_decorator(cache_control(no_cache=True, must_revalidate=True))
+    # @method_decorator(cache_page(settings.CACHE_TIME))
+    # @method_decorator(cache_control(no_cache=True, must_revalidate=True))
     # Get a list of all clients
     def get(self, request, format=None):
         clients = Client.objects.all()
@@ -71,7 +71,7 @@ class ClientsDeleteAPIView(APIView):
 class ClientsDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    @method_decorator(cache_page(settings.CACHE_TIME))
+    # @method_decorator(cache_page(settings.CACHE_TIME))
     def get(self, request,pk, format=None):
         clients = Client.objects.filter(id=pk)
         serializer = APP_ClientsSerializer(clients, many=True)

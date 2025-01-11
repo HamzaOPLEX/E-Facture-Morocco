@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    api_server: "API_SERVER_TO_CHANGE",
+    api_server: "http://127.0.0.1:8000",
     endpoints: {
         register: 'api/auth/register',
         login: 'api/auth/login',
