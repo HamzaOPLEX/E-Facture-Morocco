@@ -1,48 +1,65 @@
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Gérez les paramètres de votre application :</h1>
-            </div>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Manage Your Application Settings:</h1>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="content-header">
-<p-tabView styleClass="tabview-custom">
+  <p-tabView styleClass="tabview-custom">
+    <!-- Template Settings Tab -->
     <p-tabPanel>
-        <ng-template pTemplate="header">
-            <i class="pi pi-calendar"></i>
-            <span> Billing Settings</span>
-        </ng-template>
-        <div class="flex flex-inline" style="max-width: 500px">
-            <div class="p-inputgroup">
-                <span class="p-inputgroup-addon">
-                    <i class="pi pi-user"></i>
-                </span>
-                <input pInputText placeholder="Username" />
-            </div>
-            <div class="p-inputgroup">
-                <span class="p-inputgroup-addon">$</span>
-                <input type="text" pInputText placeholder="Price" />
-                <span class="p-inputgroup-addon">.00</span>
-            </div>
-            <div class="p-inputgroup">
-                <span class="p-inputgroup-addon">www</span>
-                <input type="text" pInputText placeholder="Website" />
-            </div>
+      <ng-template pTemplate="header">
+        <i class="pi pi-palette"></i>
+        <span>Template Settings</span>
+      </ng-template>
+      <div class="flex flex-column" style="max-width: 500px">
+        <!-- Color Picker -->
+        <div class="p-field">
+          <label for="colorPicker" class="label-custom">Select Template Color:</label>
+          <input
+            type="color"
+            id="colorPicker"
+            [(ngModel)]="templateColor"
+            class="color-input"
+            (change)="onColorChange($event)" 
+          />
         </div>
 
+        <!-- File Upload -->
+        <div class="p-field mt-4 flex flex-column">
+          <p-toast></p-toast>
+          <p-fileUpload
+            name="file"
+            url="{{UPLOAD_URL}}"
+            auto="true"
+            [multiple]="false"
+            accept="image/*"
+            maxFileSize="1000000"
+            (onUpload)="onUpload($event)"
+          >
+            <ng-template pTemplate="toolbar">
+              <div class="py-3 text-center font-bold">Upload Your Invoice Background Image</div>
+            </ng-template>
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div class="preview-template mt-4">
+        <!-- PDF Preview Section -->
+        <div class="pdf-preview-container mt-4">
+          <iframe [src]="pdfUrl | safe" width="80%" height="1000px" style="border: none; display: block; margin: 0 auto;"></iframe>
+        </div>
+      </div>
     </p-tabPanel>
-    <p-tabPanel header="Header II">
-        <ng-template pTemplate="header">
-            <i class="pi pi-user"></i>
-            <span>Document Template</span>
-        </ng-template>
-        <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-        </p>
-    </p-tabPanel>
-</p-tabView>
+  </p-tabView>
 </section>

@@ -121,7 +121,6 @@ export class DocummentsListingComponent {
 
   handleDocumentDeletion(data){
     // Assign data based on 'TYPE'
-    console.log('o a7san walid o walid o a7san walid',data)
     if (this.TYPE == 'invoices') {
       this.invoices = data;
     } 

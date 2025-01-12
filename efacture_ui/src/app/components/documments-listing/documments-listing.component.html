@@ -131,7 +131,7 @@
                             <button pButton type="button" class="p-button-warning p-button-sm btn" icon="pi pi-eye" (click)="PrintPDF(document.id)"></button>
                             <a routerLink="/{{TYPE}}/edit/{{document.id}}"><button pButton type="button" class="p-button-secondary btn p-button-sm"
                                     icon="pi pi-file-edit"></button></a>
-                            <app-delete-item [Item_ID]="document.id" URL="{{api_server}}/api/documents/delete/" (data)="handleDocumentDeletion($event)"></app-delete-item>
+                            <!-- <app-delete-item [Item_ID]="document.id" URL="{{api_server}}/api/documents/delete/" (data)="handleDocumentDeletion($event)"></app-delete-item> -->
                         </td>
                     </tr>
                 </ng-template>

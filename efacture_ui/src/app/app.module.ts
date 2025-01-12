@@ -141,13 +141,14 @@ import { EditClientModalComponent } from './components/edit-client-modal/edit-cl
 import { RegistrationComponent } from './modules/registration/registration.component';
 import { ResetPasswordComponent } from './modules/reset-password/reset-password.component';
 
-
+import { SafePipe } from '@services/pipes/safe.pipe';
 
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
     declarations: [
         AppComponent,
+        SafePipe,
         MainComponent,
         HeaderComponent,
         FooterComponent,

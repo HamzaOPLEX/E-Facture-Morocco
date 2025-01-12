@@ -11,3 +11,4 @@ django-admin-tailwind
 django-rest-swagger
 dj-static
 django-redis
+django-cors-headers==3.14.0

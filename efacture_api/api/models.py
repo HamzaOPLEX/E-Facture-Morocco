@@ -76,3 +76,9 @@ def set_document_number(sender, instance, **kwargs):
         new_id = Document.objects.filter(document_type=instance.document_type).count()
         instance.document_number = f'{template[instance.document_type]}-{new_id}/{current_year}'
         instance.save()
+
+class setting (models.Model):
+    template_color = models.CharField(default='#000000',max_length=255,unique=True,blank=False)
+    
+    def __str__(self):
+        return self.template_color

@@ -2,6 +2,14 @@ from rest_framework import serializers
 from .models import *
 
 
+class SettingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = setting
+        fields = ['template_color']  # Include `id` for easier frontend management
+
+class FileUploadSerializer(serializers.Serializer):
+    file = serializers.FileField()
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

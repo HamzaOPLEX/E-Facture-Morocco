@@ -48,4 +48,11 @@ urlpatterns = [
     path('products/update/<int:pk>', ProductsEditAPIView.as_view(), name='client-edit'),
     path('products/delete/<int:pk>', ProductsDeleteAPIView.as_view(), name='client-delete'),
 
+    # App Settings File Upload
+    path('upload-invoice-background/', UploadInvoiceBackgroundView.as_view(), name='upload-invoice-background'),
+    path('get-invoice-background/', GetInvoiceBackgroundView.as_view(), name='get_invoice_background'),
+
+    # App Settings
+    path('settings/', SettingView.as_view(), name='settings-api'),
+
 ]

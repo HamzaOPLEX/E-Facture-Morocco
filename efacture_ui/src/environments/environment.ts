@@ -3,6 +3,9 @@ export const environment = {
     api_server: "http://127.0.0.1:8000",
     endpoints: {
         register: 'api/auth/register',
+        upload_background_invoice: 'api/upload-invoice-background/',
+        get_background_invoice :'api/get-invoice-background/',
+        save_settings: 'api/settings/',
         login: 'api/auth/login',
         user: 'api/auth/user',
         documentList: 'api/documents', // + <type>
