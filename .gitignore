@@ -49,3 +49,4 @@ testem.log
 Thumbs.db
 node_modules.zip
 *.pyc
+/efacture_ui/dist
