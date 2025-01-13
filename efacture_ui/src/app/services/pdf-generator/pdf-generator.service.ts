@@ -200,7 +200,9 @@ export class PdfGeneratorService {
     let document_items_arry: any[] = [];
     let document_Total = 0;
     const document_TVA = 20;
-
+    this.hex_templateColor = templatecolor
+    this.convertToRGB()
+  
     // Build table rows and calculate total
     document_items.forEach((element) => {
       document_items_arry.push([element.name, element.quantity, element.unity_total, element.total]);

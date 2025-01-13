@@ -94,39 +94,47 @@ export class SettingsComponent {
   // Generate fake invoice and preview it
   generateFakeInvoice() {
     // Fetch the background image from the server
+    const url = `${this.API_SERVER}/${environment.endpoints.save_settings}`;
     const backgroundImageUrl = `${environment.api_server}/api/get-invoice-background/`;
-    const templateColor = this.pdfGeneratorService.getTemplateColor()
-    this.http.get(backgroundImageUrl, { responseType: 'blob' }).subscribe(
-      (imageBlob) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(imageBlob);
-        reader.onload = () => {
-        const backgroundImage = reader.result as string;
-        const fakeDocumentData = {
-          document_client: {
-            client_name: 'John Doe',
-            client_city: '1234 Elm Street',
-            client_ICE: 'ABC123456',
+
+    this.http.get<{ template_color: string }>(url).subscribe({
+      next: (response) => {
+        console.log(this.templateColor)
+        this.http.get(backgroundImageUrl, { responseType: 'blob' }).subscribe(
+          (imageBlob) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(imageBlob);
+            reader.onload = () => {
+            const backgroundImage = reader.result as string;
+            const fakeDocumentData = {
+              document_client: {
+                client_name: 'John Doe',
+                client_city: '1234 Elm Street',
+                client_ICE: 'ABC123456',
+              },
+              document_number: 'FA-1523',
+              document_date: '2025-01-12',
+              document_items: [
+                { name: 'Produit 1', quantity: 2, unity_total: 50, total: 100 },
+                { name: 'Produit 2', quantity: 1, unity_total: 150, total: 150 },
+              ],
+              backgroundImage:backgroundImage,
+              templateColor:response.template_color,
+            };
+          const pdfUrl = this.pdfGeneratorService.generateFakeInvoice(fakeDocumentData);
+          this.pdfUrl = pdfUrl; // Bind this to the iframe's src in the template
+          // this.cdr.detectChanges();
           },
-          document_number: 'FA-1523',
-          document_date: '2025-01-12',
-          document_items: [
-            { name: 'Product 1', quantity: 2, unity_total: 50, total: 100 },
-            { name: 'Product 2', quantity: 1, unity_total: 150, total: 150 },
-          ],
-          backgroundImage:backgroundImage,
-          templateColor:templateColor,
-        };
-      const pdfUrl = this.pdfGeneratorService.generateFakeInvoice(fakeDocumentData);
-      this.pdfUrl = pdfUrl; // Bind this to the iframe's src in the template
-      // this.cdr.detectChanges();
+          (error) => {
+            console.error('Error fetching the background image:', error);
+          }
+        }
+        )
       },
-      (error) => {
-        console.error('Error fetching the background image:', error);
-      }
-    }
-    )
-
+      error: (error) => {
+        console.error('Error fetching template color:', error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to fetch template color.' });
+      },
+    });
   }
-
 }
