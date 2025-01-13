@@ -46,7 +46,6 @@ class Document(models.Model):
     DOCUMENT_PAIMENT_METHOD_CHOICES = [
         ('Cash', 'CASH'),
         ('Cheque', 'CHEQUE'),
-        ('Letter', 'LETTER'),
         ('Bank_Transfer', 'BANK_TRANSFER'),
     ]
 
